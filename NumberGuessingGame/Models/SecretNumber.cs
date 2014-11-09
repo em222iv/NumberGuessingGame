@@ -10,7 +10,7 @@ namespace NumberGuessingGame.Models
     public class SecretNumber
     {
         public int Op1;
-
+         
         Random rnd = new Random();
         private List<GuessedNumber> _guessedNumbers;
         private GuessedNumber _lastGuessedNumber;
