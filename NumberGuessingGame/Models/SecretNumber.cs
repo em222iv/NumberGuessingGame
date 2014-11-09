@@ -15,7 +15,7 @@ namespace NumberGuessingGame.Models
         private List<GuessedNumber> _guessedNumbers;
         private GuessedNumber _lastGuessedNumber;
         private int? _number;
-        public const int MaxNumberOfGuesses = 7;
+        public const int MaxNumberOfGuesses = 7; 
 
         public bool CanMakeGuess { 
             get { 
