@@ -1,0 +1,16 @@
+﻿@model NumberGuessingGame.Models.SecretNumber
+
+@{
+    ViewBag.Title = "Secret number application";
+}
+
+<h2>Secret number application</h2>
+@using (Html.BeginForm())
+{ 
+    <p>Gissa ett tal mellan 1 och 100:</p>
+    //ändra
+    @Html.TextBoxFor(m=>m.Op1)
+    <input type="submit" value="Gissa" />
+    @Html.DisplayTextFor(m=>m.GuessNumbers);
+
+}
