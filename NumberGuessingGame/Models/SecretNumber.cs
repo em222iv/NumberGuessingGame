@@ -9,8 +9,7 @@ namespace NumberGuessingGame.Models
 {
     public class SecretNumber
     {
-        public int Op1;
-         
+        public int guess;
         Random rnd = new Random();
         private List<GuessedNumber> _guessedNumbers;
         private GuessedNumber _lastGuessedNumber;
@@ -28,11 +27,11 @@ namespace NumberGuessingGame.Models
         }
         public int Count {
             get { 
-                return _guessedNumbers.Count;
+                return 1;
             } 
         }
-        public IList<GuessedNumber> GuessNumbers { get { return _guessedNumbers.AsReadOnly(); } }
-        GuessedNumber LastGuessedNumber { get { return _lastGuessedNumber;} }
+        public IList<GuessedNumber> GuessedNumbers { get { return _guessedNumbers.AsReadOnly(); } }
+        public GuessedNumber LastGuessedNumber { get { return _lastGuessedNumber;} }
         public int? Number
         { 
             get
@@ -46,13 +45,17 @@ namespace NumberGuessingGame.Models
         }
         
         public void Initialize() {
-            _guessedNumbers.Clear();
-            Number = rnd.Next(1, 101);       
+        
+            Number = rnd.Next(1, 101);
         }
 
        public Outcome MakeGuess(int guess) {
 
-            return (Outcome)guess;
+           var GuessedNumberInstance = new GuessedNumber();
+           GuessedNumberInstance.Number = guess;
+           Outcome outcome = GuessedNumberInstance.Outcome;
+
+           return outcome;
         
         }
         public SecretNumber() {

@@ -17,13 +17,15 @@ namespace NumberGuessingGame.Controllers
             var model = new SecretNumber();
             return View(model);
         }
-
+        //
+        // POST: /Home/Index
         [HttpPost]
-        public ActionResult Index(SecretNumber secretNumer)
+        public ActionResult Index_POST()
         {
-            return View(secretNumer);
-
-
+            var model = new SecretNumber();
+            model.MakeGuess(model.guess);
+            return View(model);
+           
         }
     }
 }
