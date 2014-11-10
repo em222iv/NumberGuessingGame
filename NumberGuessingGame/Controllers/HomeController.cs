@@ -23,7 +23,7 @@ namespace NumberGuessingGame.Controllers
         public ActionResult Index_POST()
         {
             var model = new SecretNumber();
-            model.MakeGuess(model.guess);
+            
             return View(model);
            
         }
