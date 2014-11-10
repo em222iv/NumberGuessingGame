@@ -53,10 +53,9 @@ namespace NumberGuessingGame.Models
 
            var GuessedNumberInstance = new GuessedNumber();
            GuessedNumberInstance.Number = guess;
-           Outcome outcome = GuessedNumberInstance.Outcome;
+            GuessedNumberInstance.Outcome = Outcome.
+            
 
-           return outcome;
-        
         }
         public SecretNumber() {
    
