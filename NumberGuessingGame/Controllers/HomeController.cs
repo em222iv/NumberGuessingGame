@@ -20,10 +20,10 @@ namespace NumberGuessingGame.Controllers
         //
         // POST: /Home/Index
         [HttpPost]
-        public ActionResult Index_POST()
+        public ActionResult Index(int guess)
         {
             var model = new SecretNumber();
-            
+            model.MakeGuess(guess);
             return View(model);
            
         }

@@ -19,9 +19,8 @@ namespace NumberGuessingGame.Models
 
         public SecretNumber()
         {
-            _guessedNumbers = new List<GuessedNumber>(_guessedNumbers);
+            _guessedNumbers = new List<GuessedNumber>();
             Initialize();
-
         }
         public void Initialize()
         {
@@ -30,7 +29,6 @@ namespace NumberGuessingGame.Models
             _number = random.Next(1, 101);
             _guessedNumbers.Clear();
             _lastGuessedNumber.Outcome = Outcome.Indefinite;
-
         }
         public int Count {
             get
@@ -72,7 +70,7 @@ namespace NumberGuessingGame.Models
            _lastGuessedNumber.Number = guess;
            if (CanMakeGuess)
            {
-               if (guess < 100 || guess > 1)
+               if (guess < 100 && guess > 1)
                {
                    if (_lastGuessedNumber.Number == _number)
                    {
