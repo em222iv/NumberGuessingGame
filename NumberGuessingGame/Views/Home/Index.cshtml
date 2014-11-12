@@ -1,4 +1,4 @@
-﻿@model NumberGuessingGame.Models.SecretNumber
+﻿@model NumberGuessingGame.ViewModels.HomeIndexViewModel
 
 @{
     ViewBag.Title = "Secret number application";
@@ -8,10 +8,20 @@
 @using (Html.BeginForm())
 { 
     <p>Gissa ett tal mellan 1 och 100:</p>
-    //ändra
 
-    @Html.TextBox("guess")
+    @Html.ValidationSummary("HÄR STÄMMMER DÄÄHÄÄÄÄHHÄ INTÄÄÄ");
+    @Html.EditorFor(m => m.MyGuess)
+  // @Html.DropDownListFor(m => m.secretNumber.LastGuessedNumber, Model.OutcomeText)
    <input type="submit" value="Gissa" />
-    @Html.DisplayTextFor(m=>m.LastGuessedNumber);
+    @Html.DisplayTextFor(m=>m.GuessOutcome);
 
+}
+
+@section scripts 
+{
+    <script>
+        $(function() {
+            $("#guess").focus();
+        });
+    </script>
 }
