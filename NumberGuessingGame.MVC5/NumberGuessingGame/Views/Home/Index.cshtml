@@ -1,0 +1,65 @@
+﻿@model NumberGuessingGame.ViewModels.HomeIndexViewModel
+
+@{
+    ViewBag.Title = "Number Game";
+}
+
+<h2>Secret number application</h2>
+@using (Html.BeginForm())
+{
+
+
+    <div class="panel panel-default"> 
+        <div class="panel-heading">  
+                <h4>Guess on a number between 1 and 100:</h4>
+                <div class="input-group">
+                    @Html.TextBoxFor(m => m.Guess, new { @class="form-control"})
+
+                </div>
+                <input type="submit" value="Gissa" class="btn btn-primary" />S
+                @Html.ValidationSummary()
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-10">
+                        <h4>@Html.DisplayTextFor(m => m.outcomeText)</h4>
+                    </div>
+                    <div class="col-md-10">
+                        @Html.DisplayTextFor(m => m.guessCountText)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="list-inline">
+                            @foreach (var item in @Model.secretNumber.GuessedNumbers)
+                            {
+                                <li>@item.Number is @item.Outcome | </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+                </div>
+    </div>
+ 
+
+
+ 
+
+}
+
+<div>@using (Html.BeginForm("New", "Home"))
+{ <input type="submit" value="New Game" /> }</div>
+
+@section scripts 
+{
+    <script>
+        
+
+        $(function() {
+            $("#Guess").focus();
+        });
+        $('#Guess').on('click focusin', function () {
+            this.value = '';
+        });
+    </script>
+}
