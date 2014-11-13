@@ -17,12 +17,7 @@ namespace NumberGuessingGame.Controllers
         {
             get
             {
-                if (Session["SessionGuess"] == null)
-                {
-                    Session["SessionGuess"] = new SecretNumber();
-              
-                }
-                return Session["SessionGuess"] as SecretNumber;
+                return Session["SessionGuess"] as SecretNumber ?? (SecretNumber)(Session["SessionGuess"] = new SecretNumber());
             }
         }
         //
@@ -38,19 +33,23 @@ namespace NumberGuessingGame.Controllers
             return View(model);
         }
 
-
-
         //
         // POST: /Home/Index
         [HttpPost]
         public ActionResult Index(HomeIndexViewModel homeIndexViewModel)
         {
-
-            homeIndexViewModel.secretNumber = secretNumberSession;
-            homeIndexViewModel.MakeGuess(homeIndexViewModel.MyGuess);
-
-            homeIndexViewModel.enumMessage();
-
+            if (ModelState.IsValid) {
+                try
+                {
+                    homeIndexViewModel.secretNumber = secretNumberSession;
+                    homeIndexViewModel.MakeGuess(homeIndexViewModel.Guess);
+                    homeIndexViewModel.enumMessage();
+                }
+                catch (Exception e)
+                {
+                    ModelState.AddModelError(string.Empty, e.Message);
+                }
+            }
             return View(homeIndexViewModel);
         }
     }

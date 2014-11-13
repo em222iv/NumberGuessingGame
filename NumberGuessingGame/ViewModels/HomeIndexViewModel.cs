@@ -11,16 +11,16 @@ namespace NumberGuessingGame.ViewModels
     public class HomeIndexViewModel
     {
         public SecretNumber secretNumber { get; set; }
-
-        public void MakeGuess(int number)
-        {
-            secretNumber.MakeGuess(number);
-        }
-        public int MyGuess { get; set; }
+        public int Guess { get; set; }
         public string GuessOutcome;
+
+        public void MakeGuess(int guess)
+        {
+            secretNumber.MakeGuess(guess);
+        }  
+
         public void enumMessage()
         {
-
             switch (secretNumber.LastGuessedNumber.Outcome)
             {
                 case Outcome.Indefinite:
@@ -44,8 +44,10 @@ namespace NumberGuessingGame.ViewModels
                 default:
                     break;
             }
+        }
 
-
+        public void loopList()
+        {
         }
     }
 }

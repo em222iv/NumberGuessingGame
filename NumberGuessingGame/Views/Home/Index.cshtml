@@ -10,9 +10,9 @@
     <p>Gissa ett tal mellan 1 och 100:</p>
 
     @Html.ValidationSummary("HÄR STÄMMMER DÄÄHÄÄÄÄHHÄ INTÄÄÄ");
-    @Html.EditorFor(m => m.MyGuess)
+    @Html.EditorFor(m => m.Guess)
   // @Html.DropDownListFor(m => m.secretNumber.LastGuessedNumber, Model.OutcomeText)
-   <input type="submit" value="Gissa" />
+    <input type="submit" value="Gissa" />
     @Html.DisplayTextFor(m=>m.GuessOutcome);
 
 }
