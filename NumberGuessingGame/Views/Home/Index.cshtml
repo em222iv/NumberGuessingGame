@@ -13,15 +13,30 @@
     @Html.EditorFor(m => m.Guess)
   // @Html.DropDownListFor(m => m.secretNumber.LastGuessedNumber, Model.OutcomeText)
     <input type="submit" value="Gissa" />
-    @Html.DisplayTextFor(m=>m.GuessOutcome);
+    <div id="guessCount">@Html.DisplayTextFor(m => m._guessOutcome)</div>
+    <div id="guessCount">@Html.DisplayTextFor(m => m.guessesLeft)</div>
+    
+    <div id="guesses">
+        @foreach (var item in @Model.secretNumber.GuessedNumbers)
+        {   
+               
+                <div id="guess">@item.Number</div>
+        }
+    </div>
 
 }
+
+<div>@using (Html.BeginForm("New", "Home"))
+{ <input type="submit" value="New Game" /> }</div>
 
 @section scripts 
 {
     <script>
         $(function() {
-            $("#guess").focus();
+            $("#Guess").focus();
+        });
+        $('#Guess').on('click focusin', function () {
+            this.value = '';
         });
     </script>
 }

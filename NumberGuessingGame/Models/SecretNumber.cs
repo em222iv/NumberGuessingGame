@@ -78,7 +78,6 @@ namespace NumberGuessingGame.Models
                    _lastGuessedNumber.Outcome = Outcome.OldGuess;  
                }
                 else {
-
                     _lastGuessedNumber = new GuessedNumber();
                     _lastGuessedNumber.Number = guess;
                     _guessedNumbers.Add(_lastGuessedNumber);
@@ -95,7 +94,6 @@ namespace NumberGuessingGame.Models
                     {
                         _lastGuessedNumber.Outcome = Outcome.Right;
                     }
-                  
                 }
            }
            else 

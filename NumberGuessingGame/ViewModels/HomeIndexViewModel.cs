@@ -12,42 +12,58 @@ namespace NumberGuessingGame.ViewModels
     {
         public SecretNumber secretNumber { get; set; }
         public int Guess { get; set; }
-        public string GuessOutcome;
+        public string _guessOutcome;
+
+        public string guessesLeft;
 
         public void MakeGuess(int guess)
         {
             secretNumber.MakeGuess(guess);
-        }  
+        }
 
+
+        public void guessCount()
+        {
+            if (secretNumber.LastGuessedNumber.Outcome == Outcome.Right) 
+            {
+                guessesLeft = string.Format("Du klarade det på {0} gissningar", secretNumber.Count);
+            }
+            else if (!secretNumber.CanMakeGuess)
+            {
+                guessesLeft = string.Format("Du har slut på gissningar");
+            }
+            else { 
+                guessesLeft = string.Format("Gissning nr: {0} ",secretNumber.Count);
+            }
+
+        }
         public void enumMessage()
         {
             switch (secretNumber.LastGuessedNumber.Outcome)
             {
                 case Outcome.Indefinite:
-                    GuessOutcome = "Ingen gissning";
+                    _guessOutcome = "Ingen gissning";
                     break;
                 case Outcome.Low:
-                    GuessOutcome = "Gissningen var för låg";
+                    _guessOutcome = "Gissningen var för låg";
                     break;
                 case Outcome.High:
-                    GuessOutcome = "Gissningen var för hög";
+                    _guessOutcome = "Gissningen var för hög";
                     break;
                 case Outcome.Right:
-                    GuessOutcome = "Gissningen var KORREKT";
+                    _guessOutcome = "Gissningen var KORREKT";
                     break;
                 case Outcome.NoMoreGuesses:
-                    GuessOutcome = "Inga fler gissningar";
+                    _guessOutcome = "Inga fler gissningar. Starta nytt spel";
                     break;
                 case Outcome.OldGuess:
-                    GuessOutcome = "Gissningen var redan gjord";
+                    _guessOutcome = "Gissningen var redan gjord";
                     break;
                 default:
                     break;
             }
+         
         }
 
-        public void loopList()
-        {
-        }
     }
 }

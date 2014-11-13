@@ -33,6 +33,12 @@ namespace NumberGuessingGame.Controllers
             return View(model);
         }
 
+        public ActionResult New()
+        {
+            secretNumberSession.Initialize();
+            return RedirectToAction("Index");
+        }
+
         //
         // POST: /Home/Index
         [HttpPost]
@@ -44,6 +50,7 @@ namespace NumberGuessingGame.Controllers
                     homeIndexViewModel.secretNumber = secretNumberSession;
                     homeIndexViewModel.MakeGuess(homeIndexViewModel.Guess);
                     homeIndexViewModel.enumMessage();
+                    homeIndexViewModel.guessCount();
                 }
                 catch (Exception e)
                 {
