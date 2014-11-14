@@ -11,4 +11,5 @@ namespace NumberGuessingGame.Models
         public int? Number;
         public Outcome Outcome;
     }
+
 }
