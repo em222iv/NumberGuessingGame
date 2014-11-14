@@ -115,7 +115,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\GameSetting.cs" />
     <Compile Include="Models\GuessedNumber.cs" />
+    <Compile Include="Models\Rules\Hard.cs" />
+    <Compile Include="Models\Rules\Impossibrruu.cs" />
+    <Compile Include="Models\Rules\ISetting.cs" />
+    <Compile Include="Models\Rules\Medium.cs" />
+    <Compile Include="Models\Rules\Normal.cs" />
     <Compile Include="Models\SecretNumber.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\HomeIndexViewModel.cs" />
@@ -155,7 +161,8 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Home\View.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_gameDifficulty.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

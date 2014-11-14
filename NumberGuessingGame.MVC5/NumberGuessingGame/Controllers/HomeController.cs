@@ -8,10 +8,8 @@ using System.Web.Mvc;
 
 namespace NumberGuessingGame.Controllers
 {
-
     public class HomeController : Controller
     {
-
         protected SecretNumber secretNumberSession
         {
             get
@@ -27,19 +25,22 @@ namespace NumberGuessingGame.Controllers
             {
                 secretNumber = secretNumberSession
             };
-       
-         
+            
             return View(model);
         }
-        public ActionResult About()
-        {
-            return View();
-        }
-        public ActionResult Contact()
-        {
-            return View();
-        }
 
+        //public ActionResult Start()
+        //{
+
+        //    var model = new HomeIndexViewModel
+        //    {
+        //        secretNumber = secretNumberSession,
+        //        gameSettings = new GameSetting()
+        //    };
+        //    model.gameSettings.StartGame = true;
+        //    return View("Index", model);
+        //}
+  
         public ActionResult New()
         {
             secretNumberSession.Initialize();
@@ -51,23 +52,43 @@ namespace NumberGuessingGame.Controllers
         [HttpPost]
         public ActionResult Index(HomeIndexViewModel homeIndexViewModel)
         {
-            if (ModelState.IsValid)
+            if (Session.IsNewSession)
             {
-                try
+                homeIndexViewModel = new HomeIndexViewModel
                 {
-                    homeIndexViewModel.secretNumber = secretNumberSession;
-                    homeIndexViewModel.MakeGuess(homeIndexViewModel.Guess);
-                    homeIndexViewModel.enumMessage();
-                    homeIndexViewModel.guessCount();
+                    secretNumber = secretNumberSession
+                };
+                ModelState.AddModelError(string.Empty, "Your Time Ran Out. New Game Started");
+            }
+            else { 
+                
+                if (ModelState.IsValid)
+                {
+                    try
+                    {
+                        homeIndexViewModel.secretNumber = secretNumberSession;
+                        homeIndexViewModel.MakeGuess(homeIndexViewModel.Guess);
+                        homeIndexViewModel.enumMessage();
+                        homeIndexViewModel.guessCount();
 
-                }
-                catch (Exception e)
-                {
-                    ModelState.AddModelError(string.Empty, e.Message);
+                    }
+                    catch (Exception e)
+                    {
+                        ModelState.AddModelError(string.Empty, e.Message);
+                    }
                 }
             }
-
+         
             return View(homeIndexViewModel);
         }
+        public ActionResult About()
+        {
+            return View();
+        }
+        public ActionResult Contact()
+        {
+            return View();
+        }
+
     }
 }

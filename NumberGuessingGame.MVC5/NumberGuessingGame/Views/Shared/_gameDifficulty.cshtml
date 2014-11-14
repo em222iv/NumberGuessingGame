@@ -1,0 +1,15 @@
+﻿@model NumberGuessingGame.ViewModels.HomeIndexViewModel
+
+@{
+    ViewBag.Title = "Number Game";
+}
+
+<h2>Secret number application</h2>
+<div class="col-md-11">
+    @using (Html.BeginForm("New", "Home"))
+    {
+        <p>game dificulty settings</p>
+    }
+</div>
+
+}

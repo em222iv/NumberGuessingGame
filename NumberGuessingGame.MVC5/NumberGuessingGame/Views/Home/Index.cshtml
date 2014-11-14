@@ -4,22 +4,46 @@
     ViewBag.Title = "Number Game";
 }
 
+
 <h2>Secret number application</h2>
-@using (Html.BeginForm())
+
+<div class="col-md-11">
+@using (Html.BeginForm("Start", "Home"))
 {
-
-
-    <div class="panel panel-default"> 
-        <div class="panel-heading">  
-                <h4>Guess on a number between 1 and 100:</h4>
-                <div class="input-group">
-                    @Html.TextBoxFor(m => m.Guess, new { @class="form-control"})
-
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="text-center">
+                <!--Html.EnumDropDownListFor(m=>m.gameSettings.gameSettingsChoices, Model.GameSettingChoice)
+                <input type="submit" value="Start Game" class="btn btn-success" />-->
+            </div>
+        </div>
+    </div>
+}
+</div>
+<div class="col-md-11">
+    @using (Html.BeginForm())
+    {
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="text-center">
+                    <h4>Guess on a number between 1 and 100:</h4>
+                    <div class="input-group">
+                        @Html.TextBoxFor(m => m.Guess, new { @class = "form-control" })
+                    </div>
+                    <hr />
+                    @if (!@Model.secretNumber.CanMakeGuess)
+                    {
+                        <input type="submit" value="Gissa" class="btn btn-primary " disabled />
+                        <h3>Press "New Game" to randomize new number</h3>
+                    }
+                    else
+                    { <input type="submit" value="Gissa" class="btn btn-primary" /> }
                 </div>
-                <input type="submit" value="Gissa" class="btn btn-primary" />S
                 @Html.ValidationSummary()
             </div>
+
             <div class="panel-body">
+
                 <div class="row">
                     <div class="col-md-10">
                         <h4>@Html.DisplayTextFor(m => m.outcomeText)</h4>
@@ -28,38 +52,40 @@
                         @Html.DisplayTextFor(m => m.guessCountText)
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <ul class="list-inline">
-                            @foreach (var item in @Model.secretNumber.GuessedNumbers)
-                            {
-                                <li>@item.Number is @item.Outcome | </li>
-                            }
-                        </ul>
+                <div class="text-center">
+                    <div class="well">
+                        <div class="col-md-12">
+                            <ul class="list-inline">
+                                @foreach (var item in @Model.secretNumber.GuessedNumbers)
+                                {
+                                    <li>@item.Number is @item.Outcome | </li>
+                                }
+                            </ul>
+                        </div>
                     </div>
                 </div>
-                </div>
-    </div>
- 
+            </div>
+        </div>
 
+    }
+</div>
 
- 
+            <div class="col-md-11">
+                @using (Html.BeginForm("New", "Home"))
+    {
+                    <input type="submit" value="New Game" class="btn btn-danger" />
+    }
+            </div>
 
-}
-
-<div>@using (Html.BeginForm("New", "Home"))
-{ <input type="submit" value="New Game" /> }</div>
-
-@section scripts 
+            @section scripts
 {
-    <script>
-        
+                <script>
 
-        $(function() {
-            $("#Guess").focus();
-        });
-        $('#Guess').on('click focusin', function () {
-            this.value = '';
-        });
-    </script>
-}
+                    $(function () {
+                        $("#Guess").focus();
+                    });
+                    $('#Guess').on('click focusin', function () {
+                        this.value = '';
+                    });
+                </script>
+            }

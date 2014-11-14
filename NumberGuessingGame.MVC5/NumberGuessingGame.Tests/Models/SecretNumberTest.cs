@@ -263,10 +263,10 @@ namespace NumberGuessingGame.Tests.Models
         }
 
         [TestMethod]
-        public void CheckConstant()
-        {
-            Assert.IsTrue(SecretNumber.MaxNumberOfGuesses == 7, "Konstanten MaxNumberOfGuesses är inte tilldelad värdet 7.");
-        }
+        //public void CheckConstant()
+        //{
+        //    Assert.IsTrue(SecretNumber.MaxNumberOfGuesses == 7, "Konstanten MaxNumberOfGuesses är inte tilldelad värdet 7.");
+        //}
 
         private static object GetFieldValue(object o, string name)
         {

@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Web.Mvc;
 using System.ComponentModel.DataAnnotations;
 using NumberGuessingGame.Controllers;
 
@@ -11,6 +11,27 @@ namespace NumberGuessingGame.ViewModels
     public class HomeIndexViewModel
     {
         public SecretNumber secretNumber { get; set; }
+        //public GameSetting gameSettings { get; set; }
+
+        
+        //public SelectList GameSettingChoice
+        //{
+
+        //    get
+        //    {
+        //        var choices = new Dictionary<GameSettingChoices, string> 
+        //        {
+
+        //            { GameSettingChoices.Four, "Four guesses"},
+        //            { GameSettingChoices.Five, "Five guesses"},
+        //            { GameSettingChoices.Six, "Six guesses"},
+        //            { GameSettingChoices.Seven, "Seven guesses"},
+
+        //        };
+        //        return new SelectList(choices, "Key", "Value");
+        //    }
+        //}
+
 
         [Range(1,100, ErrorMessage="Out of range 1-100")] 
         [Required (ErrorMessage="Field required")]
@@ -19,14 +40,13 @@ namespace NumberGuessingGame.ViewModels
 
         public string outcomeText;
         public string guessCountText;
-        
 
+    
         public void MakeGuess(int guess)
         {
             secretNumber.MakeGuess(guess);
             
         }
-
 
         public void guessCount()
         {
@@ -36,7 +56,7 @@ namespace NumberGuessingGame.ViewModels
             }
             else if (!secretNumber.CanMakeGuess)
             {
-                guessCountText = string.Format("You are out of guesses. The number you were looking for was {0}", secretNumber.Number);
+                guessCountText = string.Format("You are out of guesses. The secret number was {0}", secretNumber.Number);
                
             }
             else {
@@ -58,7 +78,7 @@ namespace NumberGuessingGame.ViewModels
                     outcomeText = "Guess was to high";
                     break;
                 case Outcome.Right:
-                    outcomeText = string.Format("Your guess was CORRECT. The secret number was {0}", secretNumber.Number);
+                    outcomeText = string.Format("You sir, was CORRECT. The secret number was {0}", secretNumber.Number);
                     break;
                 case Outcome.NoMoreGuesses:
                     outcomeText = "No more guesses. Please click 'New' for another round";
