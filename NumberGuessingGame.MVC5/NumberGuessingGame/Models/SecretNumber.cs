@@ -8,9 +8,10 @@ using System.Web;
 namespace NumberGuessingGame.Models
 {
 
-    public class SecretNumber{
-    
-        
+    public class SecretNumber
+    {
+
+
         Random rnd = new Random();
         private List<GuessedNumber> _guessedNumbers;
         private GuessedNumber _lastGuessedNumber = new GuessedNumber();
@@ -32,11 +33,12 @@ namespace NumberGuessingGame.Models
             _lastGuessedNumber.Number = null;
             _lastGuessedNumber.Outcome = Outcome.Indefinite;
         }
-        public int Count {
+        public int Count
+        {
             get
-                {
-                    return _guessedNumbers.Count;
-                }
+            {
+                return _guessedNumbers.Count;
+            }
         }
         public bool CanMakeGuess
         {
@@ -44,12 +46,12 @@ namespace NumberGuessingGame.Models
             {
                 return Count < MaxNumberOfGuesses && !GuessedNumbers.Any(gn => gn.Outcome == Outcome.Right);
             }
-          
-           
+
+
         }
 
         public IList<GuessedNumber> GuessedNumbers { get { return _guessedNumbers.AsReadOnly(); } }
-        public GuessedNumber LastGuessedNumber { get { return _lastGuessedNumber;} }
+        public GuessedNumber LastGuessedNumber { get { return _lastGuessedNumber; } }
         public int? Number
         {
             get
@@ -64,20 +66,22 @@ namespace NumberGuessingGame.Models
                 }
             }
         }
-        
-       public Outcome MakeGuess(int guess) {
-           if (guess < 1 || guess > 100)
-           {
-                   throw new ArgumentOutOfRangeException("Valid range 1-100");
-           }
-            
-           if (CanMakeGuess)
-           {
-               if (GuessedNumbers.Any(gn => gn.Number == guess)) 
-               {
-                   _lastGuessedNumber.Outcome = Outcome.OldGuess;  
-               }
-                else {
+
+        public Outcome MakeGuess(int guess)
+        {
+            if (guess < 1 || guess > 100)
+            {
+                throw new ArgumentOutOfRangeException("Valid range 1-100");
+            }
+
+            if (CanMakeGuess)
+            {
+                if (GuessedNumbers.Any(gn => gn.Number == guess))
+                {
+                    _lastGuessedNumber.Outcome = Outcome.OldGuess;
+                }
+                else
+                {
                     _lastGuessedNumber = new GuessedNumber();
                     _lastGuessedNumber.Number = guess;
                     _guessedNumbers.Add(_lastGuessedNumber);
@@ -95,14 +99,14 @@ namespace NumberGuessingGame.Models
                         _lastGuessedNumber.Outcome = Outcome.Right;
                     }
                 }
-           }
-           else 
-           {
-               _lastGuessedNumber.Outcome = Outcome.NoMoreGuesses;
-           }
-           
+            }
+            else
+            {
+                _lastGuessedNumber.Outcome = Outcome.NoMoreGuesses;
+            }
 
-           return _lastGuessedNumber.Outcome;
+
+            return _lastGuessedNumber.Outcome;
         }
     }
 }

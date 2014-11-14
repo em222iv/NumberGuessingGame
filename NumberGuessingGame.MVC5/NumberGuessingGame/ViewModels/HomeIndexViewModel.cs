@@ -28,7 +28,6 @@ namespace NumberGuessingGame.ViewModels
         }
 
 
-
         public void guessCount()
         {
             if (secretNumber.LastGuessedNumber.Outcome == Outcome.Right) 

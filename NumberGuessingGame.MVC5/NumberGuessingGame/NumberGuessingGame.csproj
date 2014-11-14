@@ -116,9 +116,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\GuessedNumber.cs" />
-    <Compile Include="..\..\..\..\..\Documents\Visual Studio 2013\Projects\SecretNumber.cs">
-      <Link>Models\SecretNumber.cs</Link>
-    </Compile>
+    <Compile Include="Models\SecretNumber.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\HomeIndexViewModel.cs" />
   </ItemGroup>
@@ -156,10 +154,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="..\..\..\..\..\Documents\Visual Studio 2013\Projects\Index.cshtml">
-      <Link>Views\Home\Index.cshtml</Link>
-    </Content>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Home\View.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
