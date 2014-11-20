@@ -59,7 +59,7 @@ namespace NumberGuessingGame.Models
 
         }
 
-        public IList<GuessedNumber> GuessedNumbers { get { return _guessedNumbers.AsReadOnly(); } }
+        public IReadOnlyCollection<GuessedNumber> GuessedNumbers { get { return _guessedNumbers.AsReadOnly(); } }
         public GuessedNumber LastGuessedNumber { get { return _lastGuessedNumber; } }
         public int? Number
         {
@@ -93,20 +93,21 @@ namespace NumberGuessingGame.Models
                 {
                     _lastGuessedNumber = new GuessedNumber();
                     _lastGuessedNumber.Number = guess;
-                    _guessedNumbers.Add(_lastGuessedNumber);
 
                     if (guess > _number)
                     {
                         _lastGuessedNumber.Outcome = Outcome.High;
                     }
-                    if (guess < _number)
+                    else if (guess < _number)
                     {
                         _lastGuessedNumber.Outcome = Outcome.Low;
                     }
-                    if (guess == _number)
+                    else
                     {
                         _lastGuessedNumber.Outcome = Outcome.Right;
                     }
+
+                    _guessedNumbers.Add(_lastGuessedNumber);
                 }
             }
             else

@@ -10,7 +10,7 @@ namespace NumberGuessingGame.Controllers
 {
     public class HomeController : Controller
     {
-        protected SecretNumber secretNumberSession
+        protected SecretNumber SecretNumber
         {
             get
             {
@@ -23,7 +23,7 @@ namespace NumberGuessingGame.Controllers
         {
             var model = new HomeIndexViewModel 
             {
-                secretNumber = secretNumberSession
+                SecretNumber = SecretNumber
             };
             
             return View(model);
@@ -43,7 +43,7 @@ namespace NumberGuessingGame.Controllers
   
         public ActionResult New()
         {
-            secretNumberSession.Initialize();
+            SecretNumber.Initialize();
             return RedirectToAction("Index");
         }
 
@@ -56,21 +56,18 @@ namespace NumberGuessingGame.Controllers
             {
                 homeIndexViewModel = new HomeIndexViewModel
                 {
-                    secretNumber = secretNumberSession
+                    SecretNumber = SecretNumber
                 };
                 ModelState.AddModelError(string.Empty, "Your Time Ran Out. New Game Started");
             }
-            else { 
-                
+            else 
+            { 
                 if (ModelState.IsValid)
                 {
                     try
                     {
-                        homeIndexViewModel.secretNumber = secretNumberSession;
-                        homeIndexViewModel.MakeGuess(homeIndexViewModel.Guess);
-                        homeIndexViewModel.enumMessage();
-                        homeIndexViewModel.guessCount();
-
+                        SecretNumber.MakeGuess(homeIndexViewModel.Guess.Value);
+                        homeIndexViewModel.SecretNumber = SecretNumber;
                     }
                     catch (Exception e)
                     {

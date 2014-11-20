@@ -31,7 +31,7 @@
                         @Html.TextBoxFor(m => m.Guess, new { @class = "form-control" })
                     </div>
                     <hr />
-                    @if (!@Model.secretNumber.CanMakeGuess)
+                    @if (!@Model.SecretNumber.CanMakeGuess)
                     {
                         <input type="submit" value="Gissa" class="btn btn-primary " disabled />
                         <h3>Press "New Game" to randomize new number</h3>
@@ -56,7 +56,7 @@
                     <div class="well">
                         <div class="col-md-12">
                             <ul class="list-inline">
-                                @foreach (var item in @Model.secretNumber.GuessedNumbers)
+                                @foreach (var item in @Model.SecretNumber.GuessedNumbers)
                                 {
                                     <li>@item.Number is @item.Outcome | </li>
                                 }

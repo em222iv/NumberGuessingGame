@@ -10,7 +10,7 @@ using NumberGuessingGame.Controllers;
 namespace NumberGuessingGame.Tests.Controllers
 {
     [TestClass]
-    public class HomeControllerTest
+     class HomeControllerTest
     {
         [TestMethod]
         public void Index()
