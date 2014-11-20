@@ -35,17 +35,12 @@ namespace NumberGuessingGame.Models
             _lastGuessedNumber.Outcome = Outcome.Indefinite;
         }
 
-
-
-
         //public int MaxNumberOfGuesses { get { return _maxNumberOfGuesses; } }
 
         //public void setAmountOfGuesses(ISetting setting)
         //{
         //    _maxNumberOfGuesses = setting.MaxNumberOfGuesses();
         //}
-
-
 
         public int Count
         {

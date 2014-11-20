@@ -78,17 +78,7 @@ namespace NumberGuessingGame.Controllers
                     }
                 }
             }
-         
             return View(homeIndexViewModel);
         }
-        public ActionResult About()
-        {
-            return View();
-        }
-        public ActionResult Contact()
-        {
-            return View();
-        }
-
     }
 }
